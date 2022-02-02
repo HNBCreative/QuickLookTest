@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARQuickLook</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <main>
+    <h2 id="flag">Flag</h2>
+    <div><h1>AR Quick Look</h1></div>
+      <!-- <a rel="ar" 
+	      href="https://developer.apple.com/augmented-reality/quick-look/models/drummertoy/toy_drummer.usdz#allowsContentScaling=0 ">
+	      <img src="https://developer.apple.com/augmented-reality/quick-look/models/drummertoy/drummertoy_2x.jpg">
+    </a> -->
+    <a rel="ar"
+       id="car"
+       href="/assets/models/pig.reality#custom=https://developer.apple.com/augmented-reality/quick-look/models/solar-panels/solar_panels_custom.html&customHeight=medium">
+    <img src="https://developer.apple.com/augmented-reality/quick-look/models/drummertoy/drummertoy_2x.jpg">
+</a>
+  </main>
+  <script>
+    var flag = document.getElementById('flag')
+    console.log(flag)
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    console.log(userAgent)
+    // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+        console.log("Windows Phone")
+    }
+
+    if (/android/i.test(userAgent)) {
+        console.log("Android")
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        flag.innerHTML = "iOS"
+        console.log("iOS")
+    }
+  </script>
+  <script src="/app.js"></script>
+</body>
+</html>
